@@ -1,0 +1,35 @@
+#include <iostream>
+ using namespace std;
+ int main() {
+    setlocale(LC_ALL, "Rus");
+ int d;
+    cout << "Введите сумму задолженности D (1..1000): ";
+    cin >> d;
+
+    if (d < 1 || d > 1000) {
+        cout << "Ошибка ввода" << endl;
+        return 0;
+    }
+    int count = 0;       
+    int total_paid = 0;  
+    int pay;
+    do {
+        cout << "Введите платёж (от 1 до " << d << "): ";
+        cin >> pay;
+     if (pay < 1 || pay > d) {
+            cout << "Неподходящая сумма! Повторите ввод." << endl;
+        }
+        else {
+            d -= pay;
+            count++;
+            total_paid += pay;
+            cout << "Платёж принят. Остаток долга: " << d << endl;
+        }
+    } while (d > 0);
+
+    cout << "Долг полностью погашен!" << endl;
+    cout << "Число платежей: " << count << endl;
+    cout << "Общая сумма платежей: " << total_paid << endl;
+
+    return 0;
+}
