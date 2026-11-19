@@ -1,0 +1,38 @@
+ #include <iostream>
+using namespace std;
+int main() {
+    setlocale(LC_ALL, "Rus");
+     int p, n;
+    cout << "Введите начальное показание счётчика P (0..10000): ";
+    cin >> p;
+    cout << "Введите количество дней n (1..20): ";
+    cin >> n;
+    if (p < 0 || p > 10000 || n < 1 || n > 20) {
+        cout << "Ошибка ввода" << endl;
+        return 0;
+    }
+    int prev = p;            
+    int total = 0;           
+    int max_rashod = -1;     
+    int max_day = 1;        
+    for (int i = 1; i <= n; i++) {
+        int cur;
+        cout << "Показание за день " << i << ": ";
+        cin >> cur;
+    if (cur < prev) {
+            cout << "Ошибка: новое показание меньше предыдущего!" << endl;
+            return 0;
+        }
+     int rashod = cur - prev;
+        total += rashod;
+     if (rashod > max_rashod) {
+            max_rashod = rashod;
+            max_day = i;
+        }
+       prev = cur;
+    }
+    cout << "Общий расход: " << total << endl;
+    cout << "Наибольший дневной расход: " << max_rashod << endl;
+    cout << "Номер дня с наибольшим расходом: " << max_day << endl;
+    return 0;
+}
