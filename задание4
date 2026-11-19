@@ -1,0 +1,38 @@
+#include <iostream>
+ using namespace std;
+ int main() {
+    setlocale(LC_ALL, "Rus");
+  int r, c;
+    cout << "Введите количество тарифов r (2..8): ";
+    cin >> r;
+    cout << "Введите количество вариантов расхода c (2..10): ";
+    cin >> c;
+  if (r < 2 || r > 8 || c < 2 || c > 10) {
+        cout << "Ошибка ввода" << endl;
+        return 0;
+    }
+   cout << "\nТариф\\Расход\t";
+    for (int j = 1; j <= c; j++) {
+        cout << j << "\t";
+    }
+    cout << "Сумма" << endl;
+     for (int i = 1; i <= r; i++) {
+        cout << "Тариф " << i << "\t\t";
+        int row_sum = 0;
+         for (int j = 1; j <= c; j++) {
+            int cost = 0;
+            if (j <= 5) {
+                cost = j * (2 * i);
+            }
+            else {
+                 cost = 5 * (2 * i) + (j - 5) * (3 * i);
+            }
+        cout << cost << "\t";
+            row_sum += cost;
+        }
+
+        cout << row_sum << endl;
+    }
+
+    return 0;
+}
